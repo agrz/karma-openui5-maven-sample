@@ -30,15 +30,15 @@ The project layout integrates the [basic folder structure](https://openui5beta.h
 Javascript sources are found at src/main/javascript (layout as defined by OpenUI5)
 Project layout is:<br />
 + Project basedir<br />
-  +src/main/<tab id=t1>javascript <br />
-              <tab to=t1>+controller<br />
-			  <tab to=t1>+i18n<br />
-			  <tab to=t1>+localService<br />
-			  <tab to=t1>+model<br />
-			  <tab to=t1>+test<br />
-			  <tab to=t1>+view<br />
-			  <tab to=t1>-Component.js<br />
-			  <tab to=t1>-mainfest.json<br />
+  +src/main/javascript <br />
+              +controller<br />
+			  +i18n<br />
+			  +localService<br />
+			  +model<br />
+			  +test<br />
+			  +view<br />
+			  -Component.js<br />
+			  -mainfest.json<br />
   -.eslintrc<br />
   -bower.json<br />
   -Gruntfile.js<br />
