@@ -28,8 +28,9 @@ For this it uses the OpenUI5 jar distribution created by [Webjars](http://www.we
 ## Configuration
 The project layout integrates the [basic folder structure](https://openui5beta.hana.ondemand.com/#docs/guide/003f755d46d34dd1bbce9ffe08c8d46a.html) that OpenUI5 proposes into a [Maven project layout](https://maven.apache.org/guides/introduction/introduction-to-the-standard-directory-layout.html)
 Javascript sources are found at src/main/javascript (layout as defined by OpenUI5)
-<Pre> 
+
 Project layout is:<br />
+<Pre> 
 + Project basedir<br />
   +src/main/javascript <br />
             +controller<br />
