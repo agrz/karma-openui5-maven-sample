@@ -28,13 +28,21 @@ module.exports = function(config) {
             included: false,
             watched: true
         }, {
-            pattern: 'src/main/javascript/test/**/*.qunit.js',
+            pattern: 'src/test/javascript/**/*',
+            served: true,
+            included: false,
+            watched: true
+        }, {
+            pattern: 'src/test/javascript/**/*.qunit.js',
             served: true,
             included: true,
             watched: true
         }],
 		proxies: {
-		  "/base/src/main/javascript/resources/": "/base/bower_components/openui5-sap.ui.core/resources/"
+		  "/base/src/main/javascript/resources/": "/base/bower_components/openui5-sap.ui.core/resources/",
+		  "/webapp/": "/base/src/main/javascript/",
+		  "/webapp/test": "/base/src/test/javascript/test",
+		  "/webapp/localService": "/base/src/test/javascript/localService"
 		},
         openui5: {
             path: 'bower_components/openui5-sap.ui.core/resources/sap-ui-core.js',
@@ -49,10 +57,11 @@ module.exports = function(config) {
                         'sap.m': '/base/bower_components/openui5-sap.m/resources/sap/m',
                         'sap.ui.layout': '/base/bower_components/openui5-sap.ui.layout/resources/sap/ui/layout',
 						'sap.ui': '/base/bower_components/openui5-sap.ui.core/resources/sap/ui',
-						'test': '/base/src/main/javascript/test',
-                        'sap.ui.demo.bulletinboard': '/base/src/main/javascript',
-						'sap.ui.demo.bulletinboard.app' : '/base/src/main/javascript/test/testService',
-						'sap.ui.demo.bulletinboard.test' : '/base/src/main/javascript/test'
+						'test': '/base/src/test/javascript/test',
+                        'sap.ui.demo.bulletinboard': '/webapp',
+						'sap.ui.demo.bulletinboard.localService' : '/webapp/localService',
+						'sap.ui.demo.bulletinboard.app' : '/webapp/test/testService',
+						'sap.ui.demo.bulletinboard.test' : '/webapp/test'
                         
                     },
                     themeroots: {
@@ -64,8 +73,8 @@ module.exports = function(config) {
                             autoRespond: true
                         },
                         rootUri: '/data/',
-                        metadataURL: '/base/src/main/javascript/localService/metadata.xml',
-                        mockdataSettings: {'sMockdataBaseUrl':'/base/src/main/javascript/localService/mockdata/','bGenerateMissingMockData' : 'true'}
+                        metadataURL: '/base/src/test/javascript/localService/metadata.xml',
+                        mockdataSettings: {'sMockdataBaseUrl':'/base/src/test/javascript/localService/mockdata/','bGenerateMissingMockData' : 'true'}
                 }
             }
         },

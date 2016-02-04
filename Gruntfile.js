@@ -5,7 +5,8 @@ module.exports = function(grunt) {
 	grunt.initConfig({
 
 		dir: {
-			webapp: 'src/main/javascript',
+			source: 'src/main/javascript',
+			test: 'src/test/javascript',
 			dist: 'target/dist/webapp',
 			bower_components: 'bower_components',
 			dist_bower_components: 'target/dist/bower_components'
@@ -31,7 +32,7 @@ module.exports = function(grunt) {
 			},
 			src: {
 				options: {
-					appresources: '<%= dir.webapp %>'
+					appresources: '<%= dir.source %>'
 				}
 			},
 			dist: {
@@ -45,7 +46,7 @@ module.exports = function(grunt) {
 			component: {
 				options: {
 					resources: {
-						cwd: '<%= dir.webapp %>',
+						cwd: '<%= dir.source %>',
 						prefix: 'todo'
 					},
 					dest: '<%= dir.dist %>'
@@ -62,20 +63,19 @@ module.exports = function(grunt) {
 			dist: {
 				files: [ {
 					expand: true,
-					cwd: '<%= dir.webapp %>',
+					cwd: '<%= dir.source %>',
 					src: [
 						'**'
 					],
 					dest: '<%= dir.dist %>'
 				} ]
 			},
-			notest: {
+			test: {
 				files: [ {
 					expand: true,
-					cwd: '<%= dir.webapp %>',
+					cwd: '<%= dir.test %>',
 					src: [
 						'**',
-						'!test/**'
 					],
 					dest: '<%= dir.dist %>'
 				} ]
@@ -94,7 +94,7 @@ module.exports = function(grunt) {
 
 
 		eslint: {
-			webapp: ['<%= dir.webapp %>']
+			source: ['<%= dir.source %>']
 		}
 
 	});
@@ -115,7 +115,7 @@ module.exports = function(grunt) {
 	grunt.registerTask('lint', ['eslint']);
 
 	// Build task
-	grunt.registerTask('build', ['openui5_preload', 'copy:dist']);
+	grunt.registerTask('build', ['lint','openui5_preload', 'copy:dist','copy:test']);
 
 	// Default task
     grunt.registerTask('default', ['build','serve:dist']);

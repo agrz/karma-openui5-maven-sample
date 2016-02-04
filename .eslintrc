@@ -90,8 +90,7 @@
 
 		"brace-style": [2, "1tbs", { "allowSingleLine": true }],
 		"camelcase": 1,
-		"consistent-this": 1,
-		"linebreak-style": 2,
+		"consistent-this": 1,	
 		"max-nested-callbacks": [1, 3],
 		"new-cap": 1,
 		"new-parens": 2,
