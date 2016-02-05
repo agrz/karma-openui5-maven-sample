@@ -118,7 +118,7 @@ module.exports = function(grunt) {
 	grunt.registerTask('build', ['lint','openui5_preload', 'copy:dist','copy:test']);
 
 	// Default task
-    grunt.registerTask('default', ['build','serve:dist']);
+    grunt.registerTask('default', ['build', 'copy:deps','serve:dist']);
 
 	grunt.registerTask('all', [
 		'lint',
