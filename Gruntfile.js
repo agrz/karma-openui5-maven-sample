@@ -15,7 +15,8 @@ module.exports = function(grunt) {
 		connect: {
 			options: {
 				port: 8080,
-				hostname: '*'
+				hostname: '*',
+				open: 'http://localhost:8080/test/test.html'
 			},
 			src: {},
 			dist: {}
@@ -113,6 +114,9 @@ module.exports = function(grunt) {
 
 	// Linting task
 	grunt.registerTask('lint', ['eslint']);
+	
+	// test task
+	grunt.registerTask('test', ['build','serve:dist']);
 
 	// Build task
 	grunt.registerTask('build', ['lint','openui5_preload', 'copy:dist','copy:test']);
