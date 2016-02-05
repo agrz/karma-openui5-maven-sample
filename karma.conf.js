@@ -78,13 +78,20 @@ module.exports = function(config) {
                 }
             }
         },
-        reporters: ['progress','junit'], 
+        reporters: ['progress','junit','coverage'], 
 		junitReporter: {
 		  outputDir: 'target/surefire-reports', // results will be saved as $outputDir/$browserName.xml 
 		  outputFile: undefined, // if included, results will be saved as $outputDir/$browserName/$outputFile 
 		  suite: 'openui5', // suite will become the package name attribute in xml testsuite element 
 		  useBrowserName: true // add browser name to report and classes names 
 		},
+		preprocessors: {
+		  'src/main/javascript/**/*.js': 'coverage'         // (1)
+        },
+		coverageReporter: {
+	      type : 'html',                // (2)
+	      dir : 'target/karma-coverage'
+	    },
         port: 9876,
         colors: true,
         logLevel: config.LOG_DEBUG,
