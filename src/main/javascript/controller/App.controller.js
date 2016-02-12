@@ -6,17 +6,22 @@ sap.ui.define([
 
 	return BaseController.extend("sap.ui.demo.bulletinboard.controller.App", {
 
-		onInit: function () {
-			var oViewModel = new JSONModel({
-					busy: true,
-					delay: 0
-				});
+		createModel: function (){
+                    var oViewModel = new JSONModel({
+                        busy: true,
+                        delay: 0
+                    });
+                    return oViewModel;
+                }, onInit: function () {
+			var oViewModel = this.createModel();
 
 			this.setModel(oViewModel, "appView");
 
 			this.getOwnerComponent().getModel().metadataLoaded().then(function () {
 				oViewModel.setProperty("/busy", false);
+				jQuery.sap.log.info("MetaModel loaded");
 			});
+
 		}
 	});
 

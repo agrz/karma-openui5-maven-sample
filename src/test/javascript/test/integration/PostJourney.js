@@ -2,13 +2,24 @@
  * Post details behavior test
  */
 sap.ui.require(
-	["sap/ui/test/opaQunit"],
-	function (opaTest) {
+	["sap/ui/test/opaQunit",
+		"sap/ui/test/Opa5"],
+	function (opaTest, Opa5) {
 		"use strict";
 		QUnit.module("Post");
 		opaTest("Should see the post page when a user clicks on an entry of the list", function (Given, When, Then) {
 			// Arrangements
-			Given.iStartMyApp();
+
+			//Given.iStartMyApp();
+			Given.iStartMyUIComponent({
+				componentConfig: {
+					height: "100%",
+					name: "sap.ui.demo.bulletinboard"
+				},
+				hash: ""
+
+			});
+
 			//Actions
 			When.onTheWorklistPage.iPressOnTheItemWithTheID("PostID_15");
 			// Assertions
@@ -25,8 +36,11 @@ sap.ui.require(
 			// Actions
 			When.onTheBrowser.iPressOnTheForwardButton();
 			// Assertions
-			Then.onThePostPage.theTitleShouldDisplayTheName("Jeans").
-				and.iTeardownMyAppFrame();
+			Then.onThePostPage.theTitleShouldDisplayTheName("Jeans");
+
+			Then.iTeardownMyUIComponent();
+
+			Opa5.emptyQueue();
 		});
 	}
 );

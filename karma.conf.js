@@ -57,28 +57,34 @@ module.exports = function(config) {
                         'sap.m': '/base/bower_components/openui5-sap.m/resources/sap/m',
                         'sap.ui.layout': '/base/bower_components/openui5-sap.ui.layout/resources/sap/ui/layout',
 						'sap.ui': '/base/bower_components/openui5-sap.ui.core/resources/sap/ui',
-						'test': '/base/src/test/javascript/test',
+						'test': '/webapp/test',
                         'sap.ui.demo.bulletinboard': '/webapp',
 						'sap.ui.demo.bulletinboard.localService' : '/webapp/localService',
-						'sap.ui.demo.bulletinboard.app' : '/webapp/test/testService',
+						//'sap.ui.demo.bulletinboard.app' : '/webapp/test/testService',
+						'sap.ui.demo.bulletinboard.app' : '/webapp/index',
 						'sap.ui.demo.bulletinboard.test' : '/webapp/test'
                         
                     },
                     themeroots: {
                         'sap_bluecrystal': '/base/bower_components/openui5-themelib_sap_bluecrystal/resources'
-                    }                   
+                    },
+                    debug: true,
+                    frameOptions: 'allow',
+                    preload: 'async'
+
                 },
 				 mockserver: {
                         config: {
-                            autoRespond: true
+                            autoRespond: true,
+							autoRespondAfter : 0
                         },
                         rootUri: '/data/',
-                        metadataURL: '/base/src/test/javascript/localService/metadata.xml',
-                        mockdataSettings: {'sMockdataBaseUrl':'/base/src/test/javascript/localService/mockdata/','bGenerateMissingMockData' : 'true'}
+                        metadataURL: '/webapp/localService/metadata.xml',
+                        mockdataSettings: {'sMockdataBaseUrl':'/webapp/localService/mockdata/','bGenerateMissingMockData' : 'true'}
                 }
             }
         },
-        reporters: ['progress','junit','coverage'], 
+        reporters: ['progress','junit'],
 		junitReporter: {
 		  outputDir: 'target/surefire-reports', // results will be saved as $outputDir/$browserName.xml 
 		  outputFile: undefined, // if included, results will be saved as $outputDir/$browserName/$outputFile 
@@ -86,7 +92,7 @@ module.exports = function(config) {
 		  useBrowserName: true // add browser name to report and classes names 
 		},
 		preprocessors: {
-		  'src/main/javascript/**/*.js': 'coverage'         // (1)
+		//  'src/main/javascript/**/*.js': 'coverage'         // (1)
         },
 		coverageReporter: {
 	      type : 'html',                // (2)
